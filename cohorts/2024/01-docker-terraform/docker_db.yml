@@ -1,0 +1,18 @@
+docker network create pg-network
+# 44002f95209e380086eead51116d5a430f4058b92a6d7352d5ba9171e9765e8c
+# PGUSER and PGPASSWORD might not be properly assigned to POSTGRES_USER and POSTGRES_PASSWORD
+docker run -it \
+    -e PGUSER=zoomcamp \
+    -e POSTGRES_USER=zoomcamp \
+    -e PGPASSWORD=zoomcamp \
+    -e POSTGRES_PASSWORD=zoomcamp \
+    -e POSTGRES_DB=ny_taxi \
+    -v /Users/ksenia/Downloads/DE_Zoomcamp_24/ny_taxi_postgres_data:/var/lib/postgresql/data \
+    -p 5431:5432 \
+    --network=pg-network \
+    --name pg-database \
+    postgres:13
+
+# run docker from terminal
+    # pgcli -h localhost -p 5431 -u zoomcamp -d ny_taxi
+
